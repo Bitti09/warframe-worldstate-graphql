@@ -9,7 +9,14 @@ Current working Nodes:
 - Date
 - Events
 - Alerts
+- Goals
 
+
+Current Filter:
+
+- Alerts : Show Expired true/false
+
+Code Upload will follow in next couple of hours/days
 
 ## TODO
 
