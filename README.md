@@ -1,5 +1,10 @@
 # warframe-worldstate-graphql
-WIP  graphql parser for Warframe's Worldstate.php
+
+WIP graphql parser for Warframe's Worldstate.php
+
+Credit goes to the guys behind https://github.com/WFCD/warframe-items for the Item Translations.
+
+I am in no way affiliated with Digital Extremes or the development of Warframe
 
 Current working Nodes:
 
@@ -11,12 +16,10 @@ Current working Nodes:
 - Alerts
 - Goals
 
-
 Current Filter:
 
+- Events: Filter language (defaul is "en")
 - Alerts : Show Expired true/false
-
-Code Upload will follow in next couple of hours/days
 
 ## TODO
 
