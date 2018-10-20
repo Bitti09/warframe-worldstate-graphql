@@ -1,0 +1,128 @@
+scalar MissionType
+scalar Region
+scalar DateTime
+scalar Ids
+scalar Faction
+scalar Test
+scalar LangString
+
+type Query {
+  "Active missions"
+  ActiveMissions: [ActiveMissions!]!
+  "Current Version"
+  Version: Float!
+  "API Data: Time"
+  Time: String!
+  "API Data: Date"
+  Date: String!
+  "Current Events"
+  Events(lang: String): [Events!]!
+  "Current Alerts"
+  Alerts(showexpired: Boolean): [Alerts!]
+  "Current Events"
+  Goals: [Goals!]
+}
+
+type Events {
+  Priority: Boolean!
+  MobileOnly: Boolean!
+  Messages: [Messages]
+  Prop: String!
+  Date: DateTime!
+  ImageUrl: String
+}
+type Alerts {
+  id: Ids!
+  Activation: DateTime!
+  Expiry: DateTime!
+  MissionInfo: MissionInfo!
+  Tag: String
+}
+type ActiveMissions {
+  id: Ids!
+  Modifier: String!
+  Region: Region!
+  Seed: Float!
+  Activation: DateTime!
+  Expiry: DateTime!
+  Node: String!
+  MissionType: MissionType!
+}
+type Goals {
+  id: Ids! # 5bc9e8f7972d7d184c8398c9"
+  Activation: DateTime!
+  Expiry: DateTime!
+  Count: String
+  GoalInterim: String
+  Goal: String
+  Success: String
+  Personal: Boolean
+  Bounty: Boolean
+  Tag: String
+  Faction: Faction
+  Desc: LangString # needs tanslate
+  ToolTip: LangString # needs tanslate
+  Icon: String # needs tanslate
+  ClampNodeScores: String # '?'
+  Node: Region
+  MissionKeyName: LangString
+  ConcurrentMissionKeyNames: LangString
+  ConcurrentNodeReqs: String # better unwrap needed
+  ConcurrentNodes: String # better unwrap needed
+  RewardInterim: RewardInterim
+  Reward: Reward
+  # current inactive nodes _> untested
+  Jobs: [Jobs]
+  HealthPct: Float
+  JobAffiliationTag: String!
+  VictimNode: String!
+  RegionIdx: Float!
+}
+
+# Types
+
+type Jobs {
+  rewards: String
+  masteryReq: Int
+  minEnemyLevel: Int
+  maxEnemyLevel: Int
+  xpAmounts: [Int]
+  jobType: LangString
+}
+
+type MissionInfo {
+  faction: Faction!
+  location: String!
+  missionReward: MissionReward!
+  missionType: MissionType!
+  levelOverride: String!
+  minEnemyLevel: Float!
+  maxEnemyLevel: Float!
+  nightmare: Boolean!
+  enemySpec: String!
+  difficulty: Float!
+  seed: Float!
+}
+
+type MissionReward {
+  credits: Float!
+  items: [String!]!
+}
+
+type Messages {
+  Message: String!
+  LanguageCode: String!
+}
+
+type Reward {
+  credits: Float!
+  xp: Float!
+  items: [LangString!]!
+  countedItems: [String!]!
+}
+type RewardInterim {
+  items: [String!]!
+  countedItems: [String!]!
+  credits: Float!
+  xp: Float!
+}
