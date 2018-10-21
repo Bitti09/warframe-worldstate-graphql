@@ -1,0 +1,22 @@
+{
+    "FC_GRINEER": {
+        "en": "Grineer",
+        "de": "Grineer_de"
+    },
+    "FC_CORPUS": {
+        "en": "Corpus",
+        "de": "Corpus_de"
+    },
+    "FC_INFESTATION": {
+        "en": "Infested",
+        "de": "Infested_de"
+    },
+    "FC_CORRUPTED": {
+        "en": "Corrupted",
+        "de": "Corrupted_de"
+    },
+    "FC_OROKIN": {
+        "en": "Orokin",
+        "de": "Orokin_de"
+    }
+}
