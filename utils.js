@@ -1,6 +1,7 @@
 let lang;
 let region1, factions, lang2;
 var tmp_json = {};
+const _ = require("lodash");
 const axios = require("axios");
 const { setupCache } = require("axios-cache-adapter");
 const cache = setupCache({
@@ -9,8 +10,7 @@ const cache = setupCache({
 const api = axios.create({
   adapter: cache.adapter
 });
-const _ = require("lodash");
-// World Data
+// World Data (PC)
 api({
   url: "http://content.warframe.com/dynamic/worldState.php",
   method: "get"
@@ -34,6 +34,57 @@ api({
   // Interacting with the store, see `localForage` API.
   const length = await cache.store.length();
   return result;
+});
+api({
+  url: "http://content.ps4.warframe.com/dynamic/worldState.php",
+  method: "get"
+}).then(async response => {
+  console.log(response.request.fromCache);
+  tmp_json = response.data;
+  json = JSON.parse(
+    JSON.stringify(response.data)
+      .split('"$id":')
+      .join('"id":')
+      .split('"_id":')
+      .join('"id":')
+      .split('"$oid":')
+      .join('"oid":')
+      .split('"$date":')
+      .join('"date":')
+      .split('"$numberLong":')
+      .join('"numberLong":')
+  );
+  resultps4 = json; // 100500
+  //// console.log(result.Alerts)
+  // Interacting with the store, see `localForage` API.
+  const length = await cache.store.length();
+  return resultps4;
+});
+api({
+  url: "http://content.ps4.warframe.com/dynamic/worldState.php",
+  method: "get"
+}).then(async response => {
+  tmp_json = response.data;
+  console.log(response.request.fromCache);
+
+  json = JSON.parse(
+    JSON.stringify(response.data)
+      .split('"$id":')
+      .join('"id":')
+      .split('"_id":')
+      .join('"id":')
+      .split('"$oid":')
+      .join('"oid":')
+      .split('"$date":')
+      .join('"date":')
+      .split('"$numberLong":')
+      .join('"numberLong":')
+  );
+  resultps4 = json; // 100500
+  //// console.log(result.Alerts)
+  // Interacting with the store, see `localForage` API.
+  const length = await cache.store.length();
+  return resultps4;
 });
 // Mission
 api({
@@ -80,8 +131,9 @@ api({
   const length = await cache.store.length();
   return region1;
 });
-function SyndicateMissions(args) {
-  var source = result.SyndicateMissions;
+
+function SyndicateMissions(args, result) {
+  var source = result;
   console.log("key =" + args);
   let newarr = [];
   //newarr.length = 0;
@@ -94,8 +146,8 @@ function SyndicateMissions(args) {
   console.log("newarr =" + JSON.stringify(newarr[0]));
   return newarr;
 }
-function Events(args) {
-  var source = result.Events;
+function Events(args, result) {
+  var source = result;
   var key1 = [{ LanguageCode: args }];
   let selCountryIds = _.map(key1, "LanguageCode");
   t1 = 0;

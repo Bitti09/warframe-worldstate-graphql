@@ -8,40 +8,44 @@ scalar LangString
 
 type Query {
   "WorldSeed"
-  WorldSeed: String
+  WorldSeed(platform: String!): String
   "MobileVersion"
-  MobileVersion: String
+  MobileVersion(platform: String!): String
   "BuildLabel"
-  BuildLabel: String
+  BuildLabel(platform: String!): String
   "Active Missions"
-  ActiveMissions: [ActiveMissions!]!
+  ActiveMissions(platform: String!): [ActiveMissions!]!
   "SyndicateMissions"
-  SyndicateMissions(withjobsonly: Boolean): [SyndicateMissions]
+  SyndicateMissions(
+    withjobsonly: Boolean
+    platform: String!
+  ): [SyndicateMissions]
   "GlobalUpgrades"
-  GlobalUpgrades: [String]
+  GlobalUpgrades(platform: String!): [String]
   "FlashSales"
-  FlashSales: [FlashSales]
+  FlashSales(platform: String!): [FlashSales]
   "Invasions"
-  Invasions: [Invasions]
+  Invasions(platform: String!): [Invasions]
   "HubEvents"
-  HubEvents: [String]
+  HubEvents(platform: String!): [String]
   "NodeOverrides"
-  NodeOverrides: [NodeOverrides]
+  NodeOverrides(platform: String!): [NodeOverrides]
   "BadlandNodes"
-  BadlandNodes: [BadlandNodes]
+  BadlandNodes(platform: String!): [BadlandNodes]
   "Current Version"
-  Version: Float!
+  Version(platform: String!): Float!
   "API Data: Time"
-  Time: String!
+  Time(platform: String!): String!
   "API Data: Date"
-  Date: String!
+  Date(platform: String!): String!
   "Current Events"
-  Events(lang: String): [Events!]!
+  Events(lang: String, platform: String!): [Events!]!
   "Current Alerts"
-  Alerts(showexpired: Boolean): [Alerts!]
+  Alerts(showexpired: Boolean, platform: String!): [Alerts!]
   "Current Events"
-  Goals: [Goals!]
+  Goals(platform: String!): [Goals!]
 }
+
 type BadlandNodes {
   DefenderInfo: DefenderInfo!
   Node: String!
