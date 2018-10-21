@@ -112,7 +112,7 @@ api({
 // Factions
 api({
   url:
-    "https://raw.githubusercontent.com/WFCD/warframe-worldstate-data/master/data/factionsData.json",
+    "https://raw.githubusercontent.com/Bitti09/warframe-worldstate-graphql/master/testdata/factionsData.json",
   method: "get"
 }).then(async response1 => {
   tmp_json = response1.data;
@@ -206,10 +206,15 @@ function LangString(key) {
   return key;
 }
 function faction(key) {
+  console.log("test " + key);
+  var lang = "en";
   if (key in factions) {
-    return factions[key].value;
+    console.log(lang);
+    console.log(factions[key][lang]);
+    return factions[key][lang];
   }
   if (key) {
+    console.log("key1:" + key);
     return toTitleCase(key.replace(/^FC_/, ""));
   }
   return key;
