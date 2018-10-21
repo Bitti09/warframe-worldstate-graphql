@@ -34,6 +34,32 @@ type Query {
   BadlandNodes(platform: String!): [BadlandNodes]
   "Current Version"
   Version(platform: String!): Float!
+  "Void Trader"
+  VoidTraders(platform: String!): [VoidTraders]
+  "PrimeAccessAvailability"
+  PrimeAccessAvailability(platform: String!): PrimeAccessAvailability
+  "PrimeVaultAvailabilities"
+  PrimeVaultAvailabilities(platform: String!): [String]
+  "DailyDeals from Davo"
+  DailyDeals(platform: String!): DailyDeals
+  "LibraryInfo"
+  LibraryInfo(platform: String!): LibraryInfo
+  "PVPChallengeInstances"
+  PVPChallengeInstances(platform: String!): PVPChallengeInstances
+  "PersistentEnemies"
+  PersistentEnemies(platform: String!): [String]
+  "PVPAlternativeModes"
+  PVPAlternativeModes(platform: String!): [String]
+  "PVPActiveTournaments"
+  PVPActiveTournaments(platform: String!): [String]
+  "ProjectPct"
+  ProjectPct(platform: String!): [Float]
+  "ConstructionProjects"
+  ConstructionProjects(platform: String!): [String]
+  "TwitchPromos"
+  TwitchPromos(platform: String!): [String]
+  "WeeklyChallenges"
+  WeeklyChallenges(platform: String!): [WeeklyChallenges]
   "API Data: Time"
   Time(platform: String!): String!
   "API Data: Date"
@@ -44,6 +70,52 @@ type Query {
   Alerts(showexpired: Boolean, platform: String!): [Alerts!]
   "Current Events"
   Goals(platform: String!): [Goals!]
+}
+
+type WeeklyChallenges {
+  Challenges: [Challenges!]!
+  id: Ids!
+  Activation: DateTime
+  Expiry: DateTime
+}
+
+type PVPChallengeInstances {
+  Category: String
+  id: Ids!
+  startDate: DateTime
+  PVPMode: String
+  isGenerated: Boolean
+  subChallenges: [String]
+  endDate: DateTime
+  challengeTypeRefID: String
+  params: [Params]
+}
+
+type LibraryInfo {
+  LastCompletedTargetType: String
+}
+
+type DailyDeals {
+  StoreItem: String
+  Activation: DateTime
+  Expiry: DateTime
+  Discount: Float
+  OriginalPrice: Float
+  SalePrice: Float
+  AmountTotal: Float
+  AmountSold: Float
+}
+
+type PrimeAccessAvailability {
+  State: String
+}
+type VoidTraders {
+  id: Ids!
+  Activation: DateTime
+  Expiry: DateTime
+  Character: String!
+  Node: String!
+  Manifest: [Manifest]
 }
 
 type BadlandNodes {
@@ -156,6 +228,32 @@ type Goals {
 }
 
 # Types
+
+type Script {
+  Function: String!
+  _faction: String!
+  Script: String!
+}
+
+type Challenges {
+  Type: String
+  MinimumEnemyLevel: Float
+  RequiredCount: Float
+  ProgressIndicatorFreq: Float
+  DamageType: String
+  Script: Script
+}
+
+type Params {
+  n: String
+  v: Float
+}
+
+type Manifest {
+  ItemType: LangString
+  PrimePrice: Float
+  RegularPrice: Float
+}
 type DefenderInfo {
   IsAlliance: Boolean
   Id: Ids

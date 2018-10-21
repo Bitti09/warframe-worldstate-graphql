@@ -376,6 +376,240 @@ const resolvers = {
           res = resultpc;
       }
       return res.Goals;
+    },
+    VoidTraders: (_, args) => {
+      let res;
+      console.log(args);
+      switch (args.platform) {
+        case "pc":
+          res = resultpc;
+          break;
+        case "ps4":
+          res = resultps4;
+          break;
+        case "xb1":
+          res = resultxb;
+          break;
+        default:
+          res = resultpc;
+      }
+      return res.VoidTraders;
+    },
+    PrimeAccessAvailability: (_, args) => {
+      let res;
+      console.log(args);
+      switch (args.platform) {
+        case "pc":
+          res = resultpc;
+          break;
+        case "ps4":
+          res = resultps4;
+          break;
+        case "xb1":
+          res = resultxb;
+          break;
+        default:
+          res = resultpc;
+      }
+      return res.PrimeAccessAvailability;
+    },
+    PrimeVaultAvailabilities: (_, args) => {
+      let res;
+      console.log(args);
+      switch (args.platform) {
+        case "pc":
+          res = resultpc;
+          break;
+        case "ps4":
+          res = resultps4;
+          break;
+        case "xb1":
+          res = resultxb;
+          break;
+        default:
+          res = resultpc;
+      }
+      return res.PrimeVaultAvailabilities;
+    },
+    DailyDeals: (_, args) => {
+      let res;
+      console.log(args);
+      switch (args.platform) {
+        case "pc":
+          res = resultpc;
+          break;
+        case "ps4":
+          res = resultps4;
+          break;
+        case "xb1":
+          res = resultxb;
+          break;
+        default:
+          res = resultpc;
+      }
+      return res.DailyDeals;
+    },
+    LibraryInfo: (_, args) => {
+      let res;
+      console.log(args);
+      switch (args.platform) {
+        case "pc":
+          res = resultpc;
+          break;
+        case "ps4":
+          res = resultps4;
+          break;
+        case "xb1":
+          res = resultxb;
+          break;
+        default:
+          res = resultpc;
+      }
+      return res.LibraryInfo;
+    },
+    PVPChallengeInstances: (_, args) => {
+      let res;
+      console.log(args);
+      switch (args.platform) {
+        case "pc":
+          res = resultpc;
+          break;
+        case "ps4":
+          res = resultps4;
+          break;
+        case "xb1":
+          res = resultxb;
+          break;
+        default:
+          res = resultpc;
+      }
+      return res.PVPChallengeInstances;
+    },
+    PersistentEnemies: (_, args) => {
+      let res;
+      console.log(args);
+      switch (args.platform) {
+        case "pc":
+          res = resultpc;
+          break;
+        case "ps4":
+          res = resultps4;
+          break;
+        case "xb1":
+          res = resultxb;
+          break;
+        default:
+          res = resultpc;
+      }
+      return res.PersistentEnemies;
+    },
+    PVPAlternativeModes: (_, args) => {
+      let res;
+      console.log(args);
+      switch (args.platform) {
+        case "pc":
+          res = resultpc;
+          break;
+        case "ps4":
+          res = resultps4;
+          break;
+        case "xb1":
+          res = resultxb;
+          break;
+        default:
+          res = resultpc;
+      }
+      return res.PVPAlternativeModes;
+    },
+    PVPActiveTournaments: (_, args) => {
+      let res;
+      console.log(args);
+      switch (args.platform) {
+        case "pc":
+          res = resultpc;
+          break;
+        case "ps4":
+          res = resultps4;
+          break;
+        case "xb1":
+          res = resultxb;
+          break;
+        default:
+          res = resultpc;
+      }
+      return res.PVPActiveTournaments;
+    },
+    ProjectPct: (_, args) => {
+      let res;
+      console.log(args);
+      switch (args.platform) {
+        case "pc":
+          res = resultpc;
+          break;
+        case "ps4":
+          res = resultps4;
+          break;
+        case "xb1":
+          res = resultxb;
+          break;
+        default:
+          res = resultpc;
+      }
+      return res.ProjectPct;
+    },
+    ConstructionProjects: (_, args) => {
+      let res;
+      console.log(args);
+      switch (args.platform) {
+        case "pc":
+          res = resultpc;
+          break;
+        case "ps4":
+          res = resultps4;
+          break;
+        case "xb1":
+          res = resultxb;
+          break;
+        default:
+          res = resultpc;
+      }
+      return res.ConstructionProjects;
+    },
+    TwitchPromos: (_, args) => {
+      let res;
+      console.log(args);
+      switch (args.platform) {
+        case "pc":
+          res = resultpc;
+          break;
+        case "ps4":
+          res = resultps4;
+          break;
+        case "xb1":
+          res = resultxb;
+          break;
+        default:
+          res = resultpc;
+      }
+      return res.TwitchPromos;
+    },
+    WeeklyChallenges: (_, args) => {
+      let res;
+      console.log(args);
+      switch (args.platform) {
+        case "pc":
+          res = resultpc;
+          break;
+        case "ps4":
+          res = resultps4;
+          break;
+        case "xb1":
+          res = resultxb;
+          break;
+        default:
+          res = resultpc;
+      }
+      return res.WeeklyChallenges;
     }
   },
   MissionType: {
