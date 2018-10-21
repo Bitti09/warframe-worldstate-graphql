@@ -80,39 +80,19 @@ api({
   const length = await cache.store.length();
   return region1;
 });
-function filter1(key, source) {
-  console.log(source.length);
-  var key1 = [
-    {
-      LanguageCode: key
-    }
-  ];
-  let selCountryIds = _.map(key1, "LanguageCode");
-  let x, index1, temp1, tempmsg, t1;
-  t1 = 0;
-  console.log("key =" + key);
+function SyndicateMissions(args) {
+  var source = result.SyndicateMissions;
+  console.log("key =" + args);
+  let newarr = [];
+  //newarr.length = 0;
+  var l1 = 0;
   for (var i = 0; i < source.length; i++) {
-    console.log(
-      "t111 " +
-        _.filter(source[i].Messages, country => {
-          return _.includes(selCountryIds, country.LanguageCode);
-        })
-    );
-    if (
-      _.filter(source[i].Messages, country => {
-        return _.includes(selCountryIds, country.LanguageCode);
-      })
-    ) {
-      source[i].Messages = _.filter(source[i].Messages, country => {
-        return _.includes(selCountryIds, country.LanguageCode);
-      });
+    if (source[i].Jobs) {
+      newarr.push(source[i]);
     }
-    if (source[i].Messages.length == 0) {
-      delete source[i];
-    }
-    console.log("test1" + key.toString());
   }
-  return source;
+  console.log("newarr =" + JSON.stringify(newarr[0]));
+  return newarr;
 }
 function Events(args) {
   var source = result.Events;
@@ -193,6 +173,6 @@ module.exports = {
   region,
   faction,
   LangString,
-  filter1,
-  Events
+  Events,
+  SyndicateMissions
 };

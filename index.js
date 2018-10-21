@@ -3,9 +3,6 @@ const { ApolloServer, gql } = require("apollo-server-express");
 const { importSchema } = require("graphql-import");
 const typeDefs = importSchema("schema.graphql");
 const resolvers = require("./resolvers.js");
-const fs = require("fs");
-var url = "http://content.warframe.com/dynamic/worldState.php";
-let rawdata = fs.readFileSync("my_data.json");
 
 // Construct a  schema, using GraphQL schema language
 // Provide resolver functions for your schema fields

@@ -1,26 +1,51 @@
-const axios = require("axios");
 var moment = require("moment");
-
-const { setupCache } = require("axios-cache-adapter");
-const cache = setupCache({
-  maxAge: 15 * 60 * 1000
-});
-const api = axios.create({
-  adapter: cache.adapter
-});
 const _ = require("lodash");
 const {
   missionType,
   region,
   faction,
   LangString,
-  filter1,
-  Events
+  Events,
+  SyndicateMissions
 } = require("./utils.js");
 const resolvers = {
   Query: {
+    WorldSeed: () => {
+      return result.WorldSeed;
+    },
+    MobileVersion: () => {
+      return result.MobileVersion;
+    },
+    BuildLabel: () => {
+      return result.BuildLabel;
+    },
+    SyndicateMissions: (root, args) => {
+      if (args.withjobsonly == true) {
+        return SyndicateMissions(args.withjobsonly, result.SyndicateMissions);
+      } else {
+        return result.SyndicateMissions;
+      }
+    },
     ActiveMissions: () => {
       return result.ActiveMissions;
+    },
+    GlobalUpgrades: () => {
+      return result.GlobalUpgrades;
+    },
+    FlashSales: () => {
+      return result.FlashSales;
+    },
+    Invasions: () => {
+      return result.Invasions;
+    },
+    HubEvents: () => {
+      return result.HubEvents;
+    },
+    NodeOverrides: () => {
+      return result.NodeOverrides;
+    },
+    BadlandNodes: () => {
+      return result.BadlandNodes;
     },
     Version: () => {
       return result.Version;

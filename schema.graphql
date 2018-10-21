@@ -7,8 +7,28 @@ scalar Test
 scalar LangString
 
 type Query {
-  "Active missions"
+  "WorldSeed"
+  WorldSeed: String
+  "MobileVersion"
+  MobileVersion: String
+  "BuildLabel"
+  BuildLabel: String
+  "Active Missions"
   ActiveMissions: [ActiveMissions!]!
+  "SyndicateMissions"
+  SyndicateMissions(withjobsonly: Boolean): [SyndicateMissions]
+  "GlobalUpgrades"
+  GlobalUpgrades: [String]
+  "FlashSales"
+  FlashSales: [FlashSales]
+  "Invasions"
+  Invasions: [Invasions]
+  "HubEvents"
+  HubEvents: [String]
+  "NodeOverrides"
+  NodeOverrides: [NodeOverrides]
+  "BadlandNodes"
+  BadlandNodes: [BadlandNodes]
   "Current Version"
   Version: Float!
   "API Data: Time"
@@ -22,7 +42,59 @@ type Query {
   "Current Events"
   Goals: [Goals!]
 }
+type BadlandNodes {
+  DefenderInfo: DefenderInfo!
+  Node: String!
+  id: Ids!
+}
 
+type NodeOverrides {
+  id: Ids!
+  Node: Region!
+  Hide: Boolean
+  Seed: String
+  LevelOverride: Region
+  Activation: DateTime
+}
+type Invasions {
+  Faction: Faction!
+  LocTag: Region!
+  DefenderReward: DefenderReward!
+  Completed: Boolean!
+  Node: String!
+  Goal: Float!
+  AttackerMissionInfo: AttackerMissionInfo!
+  id: Ids!
+  Count: Float!
+  AttackerReward: AttackerReward!
+  DefenderMissionInfo: DefenderMissionInfo!
+  Activation: DateTime!
+}
+type FlashSales {
+  Popular: Boolean!
+  EndDate: DateTime!
+  PremiumOverride: Float!
+  BogoGet: Float!
+  Featured: Boolean!
+  BannerIndex: Float!
+  RegularOverride: Float!
+  BogoBuy: Float!
+  StartDate: DateTime!
+  Discount: Float!
+  TypeName: LangString!
+  ShowInMarket: Boolean!
+  ProductExpiryOverride: DateTime
+}
+
+type SyndicateMissions {
+  Activation: DateTime!
+  Expiry: DateTime!
+  Tag: String!
+  Seed: Float!
+  Jobs: [Jobs]
+  Nodes: [String!]!
+  id: Ids!
+}
 type Events {
   Priority: Boolean!
   MobileOnly: Boolean!
@@ -80,7 +152,32 @@ type Goals {
 }
 
 # Types
-
+type DefenderInfo {
+  IsAlliance: Boolean
+  Id: Ids
+  Name: String
+  MOTD: String
+  DeployerName: String
+  DeployerClan: String
+}
+type AttackerMissionInfo {
+  seed: Float!
+  faction: Faction!
+}
+type AttackerReward {
+  countedItems: [CountedItems]
+}
+type DefenderReward {
+  countedItems: [CountedItems]
+}
+type CountedItems {
+  ItemType: LangString!
+  ItemCount: Float!
+}
+type DefenderMissionInfo {
+  faction: Faction!
+  seed: Float!
+}
 type Jobs {
   rewards: String
   masteryReq: Int
