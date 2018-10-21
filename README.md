@@ -2,7 +2,7 @@
 
 WIP Graphql parser for Warframe's Worldstate.php
 
-Public Demo: [here](https://mybitti.de/playground) & Endpont for Clients: [here](https://mybitti.de/graphql)
+Public Endpoit : [here](https://mybitti.de/graphql)
 
 When finished it will become the DataSource for my little [Warframe Status Page](https://bitti09.github.io/vue-wf/#/)
 
