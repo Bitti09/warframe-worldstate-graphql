@@ -20,16 +20,16 @@ The 99% ones need to be checked over the next weeks.
 | HubEvents                | 100%                    | :x:                                                                 | Any returned Info is Shown as String Array |
 | NodeOverrides            | 99%                     | :x:                                                                 |
 | BadlandNodes             | 100% :heavy_check_mark: | :x:                                                                 |
-| VoidTraders              | 99%                     |
-| PrimeAccessAvailability  | 99%                     |
-| PrimeVaultAvailabilities | 99%                     |
-| DailyDeals               | 100% :heavy_check_mark: |
-| LibraryInfo              | 100%                    |
-| PVPChallengeInstances    | 99%                     |
-| PersistentEnemies        | 100% :heavy_check_mark: |
-| PVPAlternativeModes      | 100% :heavy_check_mark: |
-| PVPActiveTournaments     | 100% :heavy_check_mark: |
-| ProjectPct               | 100% :heavy_check_mark: |
-| ConstructionProjects     | 100% :heavy_check_mark: |
-| TwitchPromos             | 100% :heavy_check_mark: |
-| WeeklyChallenges         | 100% :heavy_check_mark: |
+| VoidTraders              | 99%                     | :x:                                                                 |
+| PrimeAccessAvailability  | 99%                     | :x:                                                                 |
+| PrimeVaultAvailabilities | 99%                     | :x:                                                                 |
+| DailyDeals               | 100% :heavy_check_mark: | :x:                                                                 |
+| LibraryInfo              | 100%                    | :x:                                                                 |
+| PVPChallengeInstances    | 99%                     | :x:                                                                 |
+| PersistentEnemies        | 100% :heavy_check_mark: | :x:                                                                 |
+| PVPAlternativeModes      | 100% :heavy_check_mark: | :x:                                                                 |
+| PVPActiveTournaments     | 100% :heavy_check_mark: | :x:                                                                 |
+| ProjectPct               | 100% :heavy_check_mark: | :x:                                                                 |
+| ConstructionProjects     | 100% :heavy_check_mark: | :x:                                                                 |
+| TwitchPromos             | 100% :heavy_check_mark: | :x:                                                                 |
+| WeeklyChallenges         | 100% :heavy_check_mark: | :x:                                                                 |
