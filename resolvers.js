@@ -61,6 +61,7 @@ const {
   faction,
   LangString,
   Events,
+  factionlang,
   SyndicateMissions
 } = require("./utils.js");
 const resolvers = {
@@ -70,16 +71,16 @@ const resolvers = {
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       return res.WorldSeed;
     },
@@ -88,16 +89,16 @@ const resolvers = {
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       return res.MobileVersion;
     },
@@ -106,16 +107,16 @@ const resolvers = {
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       return res.BuildLabel;
     },
@@ -124,16 +125,16 @@ const resolvers = {
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       if (args.withjobsonly == true) {
         return SyndicateMissions(args.withjobsonly, res.SyndicateMissions);
@@ -146,16 +147,16 @@ const resolvers = {
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       return res.ActiveMissions;
     },
@@ -164,16 +165,16 @@ const resolvers = {
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       return res.GlobalUpgrades;
     },
@@ -182,52 +183,80 @@ const resolvers = {
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       return res.FlashSales;
     },
     Invasions: (root, args) => {
-      let res;
-      console.log(args);
+      var leng = "";
+      if (args.lang) {
+        lang = args.lang;
+      } else {
+        lang = "en";
+      }
+
+      console.log(lang);
+      var res = [];
+      res.length = 0;
+
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
-      return res.Invasions;
+
+      var filtered = [];
+      filtered.length = 0;
+      filtered = res.Invasions;
+      for (var i = 0; i < filtered.length; i++) {
+        filtered[i]["Faction"] = factionlang(filtered[i]["Faction"], lang);
+        filtered[i]["AttackerMissionInfo"]["faction"] = factionlang(
+          res.Invasions[i]["AttackerMissionInfo"]["faction"],
+          lang
+        );
+        console.log(
+          "test1: " + resultpc.Invasions[i]["DefenderMissionInfo"]["faction"]
+        );
+        var x = filtered[i]["DefenderMissionInfo"]["faction"];
+        filtered[i]["DefenderMissionInfo"]["faction"] = factionlang(x, lang);
+      }
+      console.log(
+        "test1: " + resultpc.Invasions[0]["DefenderMissionInfo"]["faction"]
+      );
+      return filtered;
     },
     HubEvents: (root, args) => {
       let res;
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       return res.HubEvents;
     },
@@ -236,16 +265,16 @@ const resolvers = {
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       return res.NodeOverrides;
     },
@@ -254,16 +283,16 @@ const resolvers = {
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       return res.BadlandNodes;
     },
@@ -272,16 +301,16 @@ const resolvers = {
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       return res.Version;
     },
@@ -290,16 +319,16 @@ const resolvers = {
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       return moment.unix(res.Time).format("HH:mm:ss");
     },
@@ -308,16 +337,16 @@ const resolvers = {
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       return moment.unix(res.Date).format("DD.MM.YYYY");
     },
@@ -326,16 +355,16 @@ const resolvers = {
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       if (args.lang) {
         return Events(args.lang, res.Events);
@@ -344,68 +373,103 @@ const resolvers = {
       }
     },
     Alerts: (_, args) => {
-      let res;
+      let res, lang;
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
+      }
+      if (args.lang) {
+        lang = args.lang;
+      } else {
+        lang = "en";
       }
       var filtered = [];
       if (args.showexpired == false) {
         for (var i = 0; i < res.Alerts.length; i++) {
           var value = res.Alerts[i].Expiry.date.numberLong / 1000;
-          console.log(moment.unix(value).isBefore());
           if (moment.unix(value).isBefore() == false) {
             filtered.push(res.Alerts[i]);
           }
         }
+        for (var i = 0; i < filtered.length; i++) {
+          filtered[i].MissionInfo["faction"] = factionlang(
+            filtered[i].MissionInfo["faction"],
+            lang
+          );
+          filtered[i].MissionInfo["missionType"] = missionType(
+            filtered[i].MissionInfo["missionType"],
+            lang
+          );
+        }
         console.log("filter" + filtered);
         return filtered;
       } else {
+        filtered = res.Alerts;
+        for (var i = 0; i < filtered.length; i++) {
+          filtered[i].MissionInfo["faction"] = factionlang(
+            filtered[i].MissionInfo["faction"],
+            lang
+          );
+          filtered[i].MissionInfo["missionType"] = missionType(
+            filtered[i].MissionInfo["missionType"],
+            lang
+          );
+        }
         return res.Alerts;
       }
     },
     Goals: (_, args) => {
       let res;
+      if (args.lang) {
+        lang = args.lang;
+      } else {
+        lang = "en";
+      }
       console.log(args);
+      var filtered = [];
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
-      return res.Goals;
+      filtered = res.Goals;
+      for (var i = 0; i < filtered.length; i++) {
+        filtered[i]["Faction"] = factionlang(filtered[i]["Faction"], lang);
+      }
+      return filtered;
     },
     VoidTraders: (_, args) => {
       let res;
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       return res.VoidTraders;
     },
@@ -414,16 +478,16 @@ const resolvers = {
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       return res.PrimeAccessAvailability;
     },
@@ -432,16 +496,16 @@ const resolvers = {
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       return res.PrimeVaultAvailabilities;
     },
@@ -450,16 +514,16 @@ const resolvers = {
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       return res.DailyDeals;
     },
@@ -468,16 +532,16 @@ const resolvers = {
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       return res.LibraryInfo;
     },
@@ -486,16 +550,16 @@ const resolvers = {
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       return res.PVPChallengeInstances;
     },
@@ -504,16 +568,16 @@ const resolvers = {
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       return res.PersistentEnemies;
     },
@@ -522,16 +586,16 @@ const resolvers = {
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       return res.PVPAlternativeModes;
     },
@@ -540,16 +604,16 @@ const resolvers = {
       console.log(args);
       switch (args.platform) {
         case "pc":
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
           break;
         case "ps4":
-          res = resultps4;
+          res = JSON.parse(JSON.stringify(resultps4));
           break;
         case "xb1":
-          res = resultxb;
+          res = JSON.parse(JSON.stringify(resultxb));
           break;
         default:
-          res = resultpc;
+          res = JSON.parse(JSON.stringify(resultpc));
       }
       return res.PVPActiveTournaments;
     },
@@ -692,7 +756,7 @@ const resolvers = {
       return value; // value from the client
     },
     __serialize(value) {
-      console.log(LangString(value));
+      console.log(value);
       return LangString(value); // value sent to the client
     },
     __parseLiteral(ast) {

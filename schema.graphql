@@ -25,7 +25,7 @@ type Query {
   "FlashSales"
   FlashSales(platform: String!): [FlashSales]
   "Invasions"
-  Invasions(platform: String!): [Invasions]
+  Invasions(platform: String!, lang: String): [Invasions]
   "HubEvents"
   HubEvents(platform: String!): [String]
   "NodeOverrides"
@@ -67,9 +67,9 @@ type Query {
   "Current Events"
   Events(lang: String, platform: String!): [Events!]!
   "Current Alerts"
-  Alerts(showexpired: Boolean, platform: String!): [Alerts!]
+  Alerts(showexpired: Boolean, platform: String!, lang: String): [Alerts!]
   "Current Events"
-  Goals(platform: String!): [Goals!]
+  Goals(platform: String!, lang: String): [Goals!]
 }
 
 type WeeklyChallenges {
@@ -290,10 +290,10 @@ type Jobs {
 }
 
 type MissionInfo {
-  faction: Faction!
+  faction: String!
   location: String!
   missionReward: MissionReward!
-  missionType: MissionType!
+  missionType: String!
   levelOverride: String!
   minEnemyLevel: Float!
   maxEnemyLevel: Float!

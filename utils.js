@@ -34,7 +34,6 @@ for (var t = 0; t < langtest.length; t++) {
     factions[z[i]][l] = {};
     factions[z[i]][l] = v;
   }
-  //console.log("test= " + JSON.stringify(test["FC_GRINEER"]));
 }
 
 //missionTypes
@@ -45,7 +44,6 @@ for (var t = 0; t < langtest.length; t++) {
   content = JSON.parse(content);
   // build object
   var z = Object.keys(content);
-  console.log(content[z[0]].value);
   /**/ for (var i = 0; i < z.length; i++) {
     if (!missionTypes[z[i]]) {
       missionTypes[z[i]] = {};
@@ -56,7 +54,6 @@ for (var t = 0; t < langtest.length; t++) {
     missionTypes[z[i]][l] = {};
     missionTypes[z[i]][l] = v;
   }
-  console.log("test= " + JSON.stringify(missionTypes["MT_EXCAVATE"]));
 }
 // Language Strings
 api({
@@ -67,7 +64,6 @@ api({
   tmp_json = response1.data;
   lang2 = response1.data; // 100500
   const length = await cache.store.length();
-  console.log("Cache store length:", length);
   return lang2;
 });
 // Region
@@ -84,7 +80,6 @@ api({
 
 function SyndicateMissions(args, result) {
   var source = result;
-  console.log("key =" + args);
   let newarr = [];
   //newarr.length = 0;
   var l1 = 0;
@@ -93,7 +88,6 @@ function SyndicateMissions(args, result) {
       newarr.push(source[i]);
     }
   }
-  console.log("newarr =" + JSON.stringify(newarr[0]));
   return newarr;
 }
 function Events(args, result) {
@@ -101,7 +95,6 @@ function Events(args, result) {
   var key1 = [{ LanguageCode: args }];
   let selCountryIds = _.map(key1, "LanguageCode");
   t1 = 0;
-  console.log("key =" + args);
   let newarr = [];
   //newarr.length = 0;
   var l1 = 0;
@@ -116,12 +109,10 @@ function Events(args, result) {
       });
       // rebuild array with filtered items
       if (x != "") {
-        console.log("check1: " + JSON.stringify(x.length));
         // remove duplicate Messages
         if (x.length > 1) {
           x.splice(1);
         }
-        console.log("check2: " + JSON.stringify(x.length));
         var item = {
           id: source[i].id,
           Messages: x,
@@ -134,13 +125,12 @@ function Events(args, result) {
         newarr.push(item);
       }
     }
-    console.log("newarr =" + JSON.stringify(newarr[0]));
   }
   return newarr;
 }
-function missionType(key) {
+function missionType(key, lang) {
   if (key in missionTypes) {
-    return missionTypes[key];
+    return missionTypes[key][lang];
   }
   if (key) {
     return toTitleCase(key.replace(/^MT_/, ""));
@@ -148,7 +138,6 @@ function missionType(key) {
   return key;
 }
 function LangString(key) {
-  console.log(key.toLowerCase());
   var key = key.toLowerCase();
   if (key && lang2[key.toLowerCase()]) {
     return lang2[key.toLowerCase()].value;
@@ -160,21 +149,31 @@ function faction(key) {
     return factions[key];
   }
   if (key) {
-    return toTitleCase(key.replace(/^FC_/, ""));
+    //return toTitleCase(key.replace(/^FC_/, ""));
   }
   return key;
 }
+function factionlang(key, lang) {
+  console.log("func1 " + key);
+  if (key in factions) {
+    return factions[key][lang];
+  }
+  return key;
+}
+
 function region(key) {
   if (key && region1[key]) {
     return region1[key];
   }
   return key;
 }
+
 module.exports = {
   missionType,
   region,
   faction,
   LangString,
   Events,
+  factionlang,
   SyndicateMissions
 };

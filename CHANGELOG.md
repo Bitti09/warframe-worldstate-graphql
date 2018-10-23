@@ -89,3 +89,8 @@
         ]
       },....
   ```
+
+  - Fixed Alert Reward Schema
+  - Added language Selector to Alert, Goals
+    default is "en". Currently active for Faction String & MissionType String
+  - Fixed a the dumb variable copy, now lang/platform switch works as it should.

@@ -13,6 +13,9 @@ const server = new ApolloServer({
   resolvers,
   tracing: true,
   cacheControl: true,
+  printErrors: true, // optional
+  pretty: true,
+
   // We set `engine` to false, so that the new agent is not used.
   engine: false
 });
