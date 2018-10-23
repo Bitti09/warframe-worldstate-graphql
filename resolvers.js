@@ -280,7 +280,8 @@ const resolvers = {
       return res.HubEvents;
     },
     NodeOverrides: (root, args) => {
-      let res;
+      var res = [];
+      res.length = 0;
       console.log(args);
       switch (args.platform) {
         case "pc":
@@ -294,6 +295,12 @@ const resolvers = {
           break;
         default:
           res = JSON.parse(JSON.stringify(resultpc));
+      }
+      var filtered = [];
+      filtered.length = 0;
+      filtered = res.NodeOverrides;
+      for (var i = 0; i < filtered.length; i++) {
+        filtered[i]["Node"] = locationlang(filtered[i]["Node"], lang);
       }
       return res.NodeOverrides;
     },

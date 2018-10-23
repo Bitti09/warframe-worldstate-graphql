@@ -27,7 +27,7 @@ type Query {
   "HubEvents"
   HubEvents(platform: String!): [String]
   "NodeOverrides"
-  NodeOverrides(platform: String!): [NodeOverrides]
+  NodeOverrides(platform: String!, lang: String): [NodeOverrides]
   "BadlandNodes"
   BadlandNodes(platform: String!): [BadlandNodes]
   "Current Version"
@@ -124,7 +124,7 @@ type BadlandNodes {
 
 type NodeOverrides {
   id: Ids!
-  Node: Region!
+  Node: String!
   Hide: Boolean
   Seed: String
   LevelOverride: Region
