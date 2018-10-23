@@ -174,14 +174,12 @@ function faction(key) {
   return key;
 }
 function factionlang(key, lang) {
-  console.log("func1 " + key);
   if (key in factions) {
     return factions[key][lang];
   }
   return key;
 }
 function locationlang(key, lang) {
-  console.log("func1 " + key);
   if (key in solNodes) {
     return solNodes[key][lang];
   }

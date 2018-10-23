@@ -10,7 +10,6 @@ function getResource(id) {
   } else {
     var url = "http://content." + id + ".warframe.com/dynamic/worldState.php";
   }
-  var url = "http://content.warframe.com/dynamic/worldState.php";
   fetchJson.get(url).then(data =>
     handleData(
       data.bodyText
@@ -29,7 +28,6 @@ function getResource(id) {
   );
 }
 function handleData(data, id) {
-  console.log(id);
   switch (id) {
     case "pc":
       resultpc = JSON.parse(data);
@@ -68,7 +66,6 @@ const resolvers = {
   Query: {
     WorldSeed: (_, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -86,7 +83,6 @@ const resolvers = {
     },
     MobileVersion: (_, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -104,7 +100,6 @@ const resolvers = {
     },
     BuildLabel: (_, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -122,7 +117,6 @@ const resolvers = {
     },
     SyndicateMissions: (root, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -149,8 +143,6 @@ const resolvers = {
       } else {
         lang = "en";
       }
-
-      console.log(lang);
       var res = [];
       res.length = 0;
       switch (args.platform) {
@@ -180,7 +172,6 @@ const resolvers = {
     },
     GlobalUpgrades: (root, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -198,7 +189,6 @@ const resolvers = {
     },
     FlashSales: (root, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -221,8 +211,6 @@ const resolvers = {
       } else {
         lang = "en";
       }
-
-      console.log(lang);
       var res = [];
       res.length = 0;
 
@@ -250,20 +238,13 @@ const resolvers = {
           res.Invasions[i]["AttackerMissionInfo"]["faction"],
           lang
         );
-        console.log(
-          "test1: " + resultpc.Invasions[i]["DefenderMissionInfo"]["faction"]
-        );
         var x = filtered[i]["DefenderMissionInfo"]["faction"];
         filtered[i]["DefenderMissionInfo"]["faction"] = factionlang(x, lang);
       }
-      console.log(
-        "test1: " + resultpc.Invasions[0]["DefenderMissionInfo"]["faction"]
-      );
       return filtered;
     },
     HubEvents: (root, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -282,7 +263,6 @@ const resolvers = {
     NodeOverrides: (root, args) => {
       var res = [];
       res.length = 0;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -306,7 +286,6 @@ const resolvers = {
     },
     BadlandNodes: (root, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -324,7 +303,6 @@ const resolvers = {
     },
     Version: (root, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -342,7 +320,6 @@ const resolvers = {
     },
     Time: (root, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -360,7 +337,6 @@ const resolvers = {
     },
     Date: (root, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -378,7 +354,6 @@ const resolvers = {
     },
     Events: (root, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -418,7 +393,9 @@ const resolvers = {
       } else {
         lang = "en";
       }
+
       var filtered = [];
+      filtered.length = 0;
       if (args.showexpired == false) {
         for (var i = 0; i < res.Alerts.length; i++) {
           var value = res.Alerts[i].Expiry.date.numberLong / 1000;
@@ -435,13 +412,11 @@ const resolvers = {
             filtered[i].MissionInfo["missionType"],
             lang
           );
-          console.log(locationlang(filtered[i].MissionInfo["location"], lang));
           filtered[i].MissionInfo["location"] = locationlang(
             filtered[i].MissionInfo["location"],
             lang
           );
         }
-        console.log("filter" + filtered);
         return filtered;
       } else {
         filtered = res.Alerts;
@@ -454,13 +429,12 @@ const resolvers = {
             filtered[i].MissionInfo["missionType"],
             lang
           );
-          console.log(locationlang(filtered[i].MissionInfo["location"], lang));
           filtered[i].MissionInfo["location"] = locationlang(
             filtered[i].MissionInfo["location"],
             lang
           );
         }
-        return res.Alerts;
+        return filtered;
       }
     },
     Goals: (_, args) => {
@@ -470,7 +444,6 @@ const resolvers = {
       } else {
         lang = "en";
       }
-      console.log(args);
       var filtered = [];
       switch (args.platform) {
         case "pc":
@@ -493,7 +466,6 @@ const resolvers = {
     },
     VoidTraders: (_, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -511,7 +483,6 @@ const resolvers = {
     },
     PrimeAccessAvailability: (_, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -529,7 +500,6 @@ const resolvers = {
     },
     PrimeVaultAvailabilities: (_, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -547,7 +517,6 @@ const resolvers = {
     },
     DailyDeals: (_, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -565,7 +534,6 @@ const resolvers = {
     },
     LibraryInfo: (_, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -583,7 +551,6 @@ const resolvers = {
     },
     PVPChallengeInstances: (_, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -601,7 +568,6 @@ const resolvers = {
     },
     PersistentEnemies: (_, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -619,7 +585,6 @@ const resolvers = {
     },
     PVPAlternativeModes: (_, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -637,7 +602,6 @@ const resolvers = {
     },
     PVPActiveTournaments: (_, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -655,7 +619,6 @@ const resolvers = {
     },
     ProjectPct: (_, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = resultpc;
@@ -673,7 +636,6 @@ const resolvers = {
     },
     ConstructionProjects: (_, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = resultpc;
@@ -691,7 +653,6 @@ const resolvers = {
     },
     TwitchPromos: (_, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = resultpc;
@@ -709,7 +670,6 @@ const resolvers = {
     },
     WeeklyChallenges: (_, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = resultpc;
@@ -723,7 +683,6 @@ const resolvers = {
         default:
           res = resultpc;
       }
-      console.log(res.WeeklyChallenges);
       return res.WeeklyChallenges;
     }
   },
@@ -743,11 +702,9 @@ const resolvers = {
   },
   Test: {
     __parseValue(value) {
-      console.log(value);
       return value; // value from the client
     },
     __serialize(value) {
-      console.log(value);
       return value; // value sent to the client
     },
     __parseLiteral(ast) {
@@ -759,11 +716,9 @@ const resolvers = {
   },
   LangString: {
     __parseValue(value) {
-      console.log(value);
       return value; // value from the client
     },
     __serialize(value) {
-      console.log(value);
       return LangString(value); // value sent to the client
     },
     __parseLiteral(ast) {
@@ -775,12 +730,10 @@ const resolvers = {
   },
   DateTime: {
     __parseValue(value) {
-      console.log(value);
       return value; // value from the client
     },
     __serialize(value) {
       var value = value.date.numberLong / 1000;
-      console.log(value);
       var date = moment.unix(value).format("DD.MM.YYYY");
       var time = moment.unix(value).format("HH:mm:ss");
       var combined = date + " - " + time;
@@ -800,11 +753,9 @@ const resolvers = {
   },
   Ids: {
     __parseValue(value) {
-      console.log(value);
       return value; // value from the client
     },
     __serialize(value) {
-      console.log(value);
       return region(value.oid); // value sent to the client
     },
     __parseLiteral(ast) {
