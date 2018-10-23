@@ -305,7 +305,8 @@ type MissionInfo {
 
 type MissionReward {
   credits: Float!
-  items: [String!]!
+  countedItems: [CountedItems]
+  items: [String]
 }
 
 type Messages {
