@@ -38,3 +38,54 @@
       "zh": "Infested"
       }
   ```
+
+  - Multilang for Events
+    Event Messages can be filtered by lang id
+    Example:
+
+  ```
+    pcevents: Events(platform: "pc", lang: "de") {
+    Messages {
+      Message
+    }
+  }
+    ps4events: Events(platform: "ps4", lang: "en") {
+    Messages {
+      Message
+    }
+  }
+  xbevents: Events(platform: "xb", lang: "es") {
+    Messages {
+      Message
+    }
+  }
+  ```
+
+  Result:
+
+  ```
+    "pcevents": [
+      {
+        "Messages": [
+          {
+            "Message": "Chroma Prime Access jetzt erhältlich!"
+          }
+        ]
+      },.....
+    "ps4events": [
+      {
+        "Messages": [
+          {
+            "Message": "Chroma Prime Access Available Now!"
+          }
+        ]
+      },....
+    "xbevents": [
+      {
+        "Messages": [
+          {
+            "Message": "La Máscara de Revenant: Actualización 23.7.0"
+          }
+        ]
+      },....
+  ```
