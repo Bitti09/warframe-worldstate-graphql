@@ -59,7 +59,7 @@ type Query {
   "TwitchPromos"
   TwitchPromos(platform: String!): [String]
   "WeeklyChallenges"
-  WeeklyChallenges(platform: String!): [WeeklyChallenges]
+  WeeklyChallenges(platform: String!): WeeklyChallenges
   "API Data: Time"
   Time(platform: String!): String!
   "API Data: Date"
@@ -73,7 +73,7 @@ type Query {
 }
 
 type WeeklyChallenges {
-  Challenges: [Challenges!]!
+  Challenges: [Challenges]
   id: Ids!
   Activation: DateTime
   Expiry: DateTime

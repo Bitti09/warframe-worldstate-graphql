@@ -27,7 +27,7 @@ const engine = new ApolloEngine({
 engine.listen(
   {
     port: 4000,
-  expressApp: app
+    expressApp: app
   },
   () =>
     console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)

@@ -1,7 +1,9 @@
 let lang;
-let region1, factions, lang2;
+let region1, lang2;
 var tmp_json = {};
 const _ = require("lodash");
+const fetchJson = require("fetch-json");
+var fs = require("fs");
 const axios = require("axios");
 const { setupCache } = require("axios-cache-adapter");
 const cache = setupCache({
@@ -10,93 +12,52 @@ const cache = setupCache({
 const api = axios.create({
   adapter: cache.adapter
 });
-// World Data (PC)
-api({
-  url: "http://content.warframe.com/dynamic/worldState.php",
-  method: "get"
-}).then(async response => {
-  tmp_json = response.data;
-  json = JSON.parse(
-    JSON.stringify(response.data)
-      .split('"$id":')
-      .join('"id":')
-      .split('"_id":')
-      .join('"id":')
-      .split('"$oid":')
-      .join('"oid":')
-      .split('"$date":')
-      .join('"date":')
-      .split('"$numberLong":')
-      .join('"numberLong":')
-  );
-  result = json; // 100500
-  //// console.log(result.Alerts)
-  // Interacting with the store, see `localForage` API.
-  const length = await cache.store.length();
-  return result;
-});
-api({
-  url: "http://content.ps4.warframe.com/dynamic/worldState.php",
-  method: "get"
-}).then(async response => {
-  console.log(response.request.fromCache);
-  tmp_json = response.data;
-  json = JSON.parse(
-    JSON.stringify(response.data)
-      .split('"$id":')
-      .join('"id":')
-      .split('"_id":')
-      .join('"id":')
-      .split('"$oid":')
-      .join('"oid":')
-      .split('"$date":')
-      .join('"date":')
-      .split('"$numberLong":')
-      .join('"numberLong":')
-  );
-  resultps4 = json; // 100500
-  //// console.log(result.Alerts)
-  // Interacting with the store, see `localForage` API.
-  const length = await cache.store.length();
-  return resultps4;
-});
-api({
-  url: "http://content.ps4.warframe.com/dynamic/worldState.php",
-  method: "get"
-}).then(async response => {
-  tmp_json = response.data;
-  console.log(response.request.fromCache);
+var factions = {};
+var missionTypes = {};
 
-  json = JSON.parse(
-    JSON.stringify(response.data)
-      .split('"$id":')
-      .join('"id":')
-      .split('"_id":')
-      .join('"id":')
-      .split('"$oid":')
-      .join('"oid":')
-      .split('"$date":')
-      .join('"date":')
-      .split('"$numberLong":')
-      .join('"numberLong":')
-  );
-  resultps4 = json; // 100500
-  //// console.log(result.Alerts)
-  // Interacting with the store, see `localForage` API.
-  const length = await cache.store.length();
-  return resultps4;
-});
-// Mission
-api({
-  url:
-    "https://raw.githubusercontent.com/WFCD/warframe-worldstate-data/master/data/missionTypes.json",
-  method: "get"
-}).then(async response1 => {
-  tmp_json = response1.data;
-  lang = response1.data; // 100500
-  const length = await cache.store.length();
-  return lang;
-});
+var langtest = ["de", "es", "fr", "it", "ko", "pl", "pt", "ru", "zh", "en"];
+//factions
+for (var t = 0; t < langtest.length; t++) {
+  //read data
+  var url1 = "test/data/" + langtest[t] + "/factionsData.json";
+  var content = fs.readFileSync(url1);
+  content = JSON.parse(content);
+  // build object
+  var z = Object.keys(content);
+  for (var i = 0; i < z.length; i++) {
+    if (!factions[z[i]]) {
+      factions[z[i]] = {};
+    }
+    var l = langtest[t];
+    var v = content[[z[i]]].value;
+    var tt = { value: [v] };
+    factions[z[i]][l] = {};
+    factions[z[i]][l] = v;
+  }
+  //console.log("test= " + JSON.stringify(test["FC_GRINEER"]));
+}
+
+//missionTypes
+for (var t = 0; t < langtest.length; t++) {
+  //read data
+  var url1 = "test/data/" + langtest[t] + "/missionTypes.json";
+  var content = fs.readFileSync(url1);
+  content = JSON.parse(content);
+  // build object
+  var z = Object.keys(content);
+  console.log(content[z[0]].value);
+  /**/ for (var i = 0; i < z.length; i++) {
+    if (!missionTypes[z[i]]) {
+      missionTypes[z[i]] = {};
+    }
+    var l = langtest[t];
+    var v = content[[z[i]]].value;
+    var tt = { value: [v] };
+    missionTypes[z[i]][l] = {};
+    missionTypes[z[i]][l] = v;
+  }
+  console.log("test= " + JSON.stringify(missionTypes["MT_EXCAVATE"]));
+}
 // Language Strings
 api({
   url:
@@ -108,17 +69,6 @@ api({
   const length = await cache.store.length();
   console.log("Cache store length:", length);
   return lang2;
-});
-// Factions
-api({
-  url:
-    "https://raw.githubusercontent.com/Bitti09/warframe-worldstate-graphql/master/testdata/factionsData.json",
-  method: "get"
-}).then(async response1 => {
-  tmp_json = response1.data;
-  factions = response1.data; // 100500
-  const length = await cache.store.length();
-  return lang;
 });
 // Region
 api({
@@ -189,8 +139,8 @@ function Events(args, result) {
   return newarr;
 }
 function missionType(key) {
-  if (key in lang) {
-    return lang[key].value;
+  if (key in missionTypes) {
+    return missionTypes[key];
   }
   if (key) {
     return toTitleCase(key.replace(/^MT_/, ""));
@@ -206,15 +156,10 @@ function LangString(key) {
   return key;
 }
 function faction(key) {
-  console.log("test " + key);
-  var lang = "en";
   if (key in factions) {
-    console.log(lang);
-    console.log(factions[key][lang]);
-    return factions[key][lang];
+    return factions[key];
   }
   if (key) {
-    console.log("key1:" + key);
     return toTitleCase(key.replace(/^FC_/, ""));
   }
   return key;

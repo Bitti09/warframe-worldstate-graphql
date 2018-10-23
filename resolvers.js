@@ -11,22 +11,37 @@ function getResource(id) {
     var url = "http://content." + id + ".warframe.com/dynamic/worldState.php";
   }
   var url = "http://content.warframe.com/dynamic/worldState.php";
-  fetchJson.get(url).then(data => handleData(data, id));
+  fetchJson.get(url).then(data =>
+    handleData(
+      data.bodyText
+        .split('"$id":')
+        .join('"id":')
+        .split('"_id":')
+        .join('"id":')
+        .split('"$oid":')
+        .join('"oid":')
+        .split('"$date":')
+        .join('"date":')
+        .split('"$numberLong":')
+        .join('"numberLong":'),
+      id
+    )
+  );
 }
 function handleData(data, id) {
   console.log(id);
   switch (id) {
     case "pc":
-      resultpc = JSON.parse(data.bodyText);
+      resultpc = JSON.parse(data);
       break;
     case "ps4":
-      resultps4 = JSON.parse(data.bodyText);
+      resultps4 = JSON.parse(data);
       break;
     case "xb1":
-      resultxb = JSON.parse(data.bodyText);
+      resultxb = JSON.parse(data);
       break;
     default:
-      resultpc = JSON.parse(data.bodyText);
+      resultpc = JSON.parse(data);
   }
 }
 getResource();
@@ -330,7 +345,6 @@ const resolvers = {
     },
     Alerts: (_, args) => {
       let res;
-      console.log(args);
       switch (args.platform) {
         case "pc":
           res = resultpc;
@@ -609,6 +623,7 @@ const resolvers = {
         default:
           res = resultpc;
       }
+      console.log(res.WeeklyChallenges);
       return res.WeeklyChallenges;
     }
   },
@@ -629,11 +644,9 @@ const resolvers = {
   },
   Region: {
     __parseValue(value) {
-      console.log(value);
       return value; // value from the client
     },
     __serialize(value) {
-      console.log(value);
       return region(value); // value sent to the client
     },
     __parseLiteral(ast) {
@@ -661,11 +674,9 @@ const resolvers = {
   },
   Faction: {
     __parseValue(value) {
-      console.log(value);
       return value; // value from the client
     },
     __serialize(value) {
-      console.log(value);
       return faction(value); // value sent to the client
     },
     __parseLiteral(ast) {

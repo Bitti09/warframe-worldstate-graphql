@@ -2,7 +2,7 @@
 
 WIP Graphql parser for Warframe's Worldstate.php
 
-Public Endpoit : [here](https://mybitti.de/graphql)
+Public Endpoint : [here](https://mybitti.de/graphql)
 
 When finished it will become the DataSource for my little [Warframe Status Page](https://bitti09.github.io/vue-wf/#/)
 
@@ -14,11 +14,12 @@ Current working Nodes & Filters:
 
 ## TODO
 
-- [ ] Rest of Worldstate Nodes
 - [ ] Fix currently missing Node Parts
-- [ ] Better translation functions
-- [ ] Adding filter when usefull
-- [ ] Code Cleanups / Code Splits
+- [~] Better translation functions (WIP, see See [CHANGELOG.md](https://github.com/Bitti09/warframe-worldstate-graphql/blob/master/CHANGELOG.md) for updates)
+- [ ] Adding more filter when usefull
+- [~] Code Cleanups / Code Splits
+- [ ] prepare the Code for Graphql Subscriptions :)
+      ]
 
 Credit goes to the guys behind https://github.com/WFCD/warframe-items for the Item Translations.
 
