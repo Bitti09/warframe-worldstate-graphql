@@ -143,8 +143,16 @@ const resolvers = {
       }
     },
     ActiveMissions: (root, args) => {
-      let res;
-      console.log(args);
+      var leng = "";
+      if (args.lang) {
+        lang = args.lang;
+      } else {
+        lang = "en";
+      }
+
+      console.log(lang);
+      var res = [];
+      res.length = 0;
       switch (args.platform) {
         case "pc":
           res = JSON.parse(JSON.stringify(resultpc));
@@ -158,7 +166,16 @@ const resolvers = {
         default:
           res = JSON.parse(JSON.stringify(resultpc));
       }
-      return res.ActiveMissions;
+      var filtered = [];
+      filtered.length = 0;
+      filtered = res.ActiveMissions;
+      for (var i = 0; i < filtered.length; i++) {
+        filtered[i]["MissionType"] = missionType(
+          filtered[i]["MissionType"],
+          lang
+        );
+      }
+      return filtered;
     },
     GlobalUpgrades: (root, args) => {
       let res;
@@ -691,21 +708,6 @@ const resolvers = {
       return res.WeeklyChallenges;
     }
   },
-  MissionType: {
-    __parseValue(value) {
-      return value; // value from the client
-    },
-    __serialize(value) {
-      console.log(value);
-      return missionType(value); // value sent to the client
-    },
-    __parseLiteral(ast) {
-      if (ast.kind === Kind.INT) {
-        return parseInt(ast.value, 10); // ast value is always in string format
-      }
-      return null;
-    }
-  },
   Region: {
     __parseValue(value) {
       return value; // value from the client
@@ -728,20 +730,6 @@ const resolvers = {
     __serialize(value) {
       console.log(value);
       return value; // value sent to the client
-    },
-    __parseLiteral(ast) {
-      if (ast.kind === Kind.INT) {
-        return parseInt(ast.value, 10); // ast value is always in string format
-      }
-      return null;
-    }
-  },
-  Faction: {
-    __parseValue(value) {
-      return value; // value from the client
-    },
-    __serialize(value) {
-      return faction(value); // value sent to the client
     },
     __parseLiteral(ast) {
       if (ast.kind === Kind.INT) {
