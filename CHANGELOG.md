@@ -91,6 +91,6 @@
   ```
 
   - Fixed Alert Reward Schema
-  - Added language Selector to Alert, Goals, Invasions, ActiveMissions
-    default is "en". Currently active for Faction String & MissionType String
+  - Added language Selector to Alert, Goals, Invasions, ActiveMissions & Node
+    default is "en". Currently active for Faction , MissionType & Node String
   - Fixed a the dumb variable copy, now lang/platform switch works as it should.

@@ -58,7 +58,7 @@ let timerId = setTimeout(function tick() {
 const {
   missionType,
   region,
-  faction,
+  locationlang,
   LangString,
   Events,
   factionlang,
@@ -174,6 +174,7 @@ const resolvers = {
           filtered[i]["MissionType"],
           lang
         );
+        filtered[i]["Node"] = locationlang(filtered[i]["Node"], lang);
       }
       return filtered;
     },
@@ -244,6 +245,7 @@ const resolvers = {
       filtered = res.Invasions;
       for (var i = 0; i < filtered.length; i++) {
         filtered[i]["Faction"] = factionlang(filtered[i]["Faction"], lang);
+        filtered[i]["Node"] = locationlang(filtered[i]["Node"], lang);
         filtered[i]["AttackerMissionInfo"]["faction"] = factionlang(
           res.Invasions[i]["AttackerMissionInfo"]["faction"],
           lang
@@ -426,6 +428,11 @@ const resolvers = {
             filtered[i].MissionInfo["missionType"],
             lang
           );
+          console.log(locationlang(filtered[i].MissionInfo["location"], lang));
+          filtered[i].MissionInfo["location"] = locationlang(
+            filtered[i].MissionInfo["location"],
+            lang
+          );
         }
         console.log("filter" + filtered);
         return filtered;
@@ -438,6 +445,11 @@ const resolvers = {
           );
           filtered[i].MissionInfo["missionType"] = missionType(
             filtered[i].MissionInfo["missionType"],
+            lang
+          );
+          console.log(locationlang(filtered[i].MissionInfo["location"], lang));
+          filtered[i].MissionInfo["location"] = locationlang(
+            filtered[i].MissionInfo["location"],
             lang
           );
         }

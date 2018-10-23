@@ -14,6 +14,7 @@ const api = axios.create({
 });
 var factions = {};
 var missionTypes = {};
+var solNodes = {};
 
 var langtest = ["de", "es", "fr", "it", "ko", "pl", "pt", "ru", "zh", "en"];
 //factions
@@ -53,6 +54,25 @@ for (var t = 0; t < langtest.length; t++) {
     var tt = { value: [v] };
     missionTypes[z[i]][l] = {};
     missionTypes[z[i]][l] = v;
+  }
+}
+//solNodes
+for (var t = 0; t < langtest.length; t++) {
+  //read data
+  var url1 = "test/data/" + langtest[t] + "/solNodes.json";
+  var content = fs.readFileSync(url1);
+  content = JSON.parse(content);
+  // build object
+  var z = Object.keys(content);
+  /**/ for (var i = 0; i < z.length; i++) {
+    if (!solNodes[z[i]]) {
+      solNodes[z[i]] = {};
+    }
+    var l = langtest[t];
+    var v = content[[z[i]]].value;
+    var tt = { value: [v] };
+    solNodes[z[i]][l] = {};
+    solNodes[z[i]][l] = v;
   }
 }
 // Language Strings
@@ -160,7 +180,13 @@ function factionlang(key, lang) {
   }
   return key;
 }
-
+function locationlang(key, lang) {
+  console.log("func1 " + key);
+  if (key in solNodes) {
+    return solNodes[key][lang];
+  }
+  return key;
+}
 function region(key) {
   if (key && region1[key]) {
     return region1[key];
@@ -171,7 +197,7 @@ function region(key) {
 module.exports = {
   missionType,
   region,
-  faction,
+  locationlang,
   LangString,
   Events,
   factionlang,
