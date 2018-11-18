@@ -1,35 +1,51 @@
-Current Coverage of Warframes WordState.php [http://content.warframe.com/dynamic/worldState.php]
-The 99% ones need to be checked over the next weeks.
+# Status of the Graphql Schema:
 
-| Section                  | Coverage Status         | Filter possible<br>Global filter(required): platform (pc,ps4 or xb) | Other Informations                         |
-| ------------------------ | ----------------------- | ------------------------------------------------------------------- | ------------------------------------------ |
-| WorldSeed                | 100% :heavy_check_mark: | :x:                                                                 |
-| Version                  | 100% :heavy_check_mark: | :x:                                                                 |
-| MobileVersion            | 100% :heavy_check_mark: | :x:                                                                 |
-| BuildLabel               | 100% :heavy_check_mark: | :x:                                                                 |
-| Time                     | 100% :heavy_check_mark: | :x:                                                                 | Converted to 24h Time                      |
-| Date                     | 100% :heavy_check_mark: | :x:                                                                 | Converted to DD.MM.YYYY format             |
-| Events                   | 100% :heavy_check_mark: | :heavy_check_mark: <br>Language<br>(default is "en")                |
-| Goals                    | 50%                     | :x:                                                                 |
-| Alerts                   | 99%                     | :heavy_check_mark: <br>showexpired                                  |
-| SyndicateMissions        | 99%                     | :heavy_check_mark: <br>withjobsonly                                 |
-| ActiveMissions           | 100% :heavy_check_mark: | :x:                                                                 |
-| GlobalUpgrades           | 100%                    | :x:                                                                 | Any returned Info is Shown as String Array |
-| FlashSales               | 99%                     | :x:                                                                 |
-| Invasions                | 99%                     | :x:                                                                 |
-| HubEvents                | 100%                    | :x:                                                                 | Any returned Info is Shown as String Array |
-| NodeOverrides            | 99%                     | :x:                                                                 |
-| BadlandNodes             | 100% :heavy_check_mark: | :x:                                                                 |
-| VoidTraders              | 99%                     | :x:                                                                 |
-| PrimeAccessAvailability  | 99%                     | :x:                                                                 |
-| PrimeVaultAvailabilities | 99%                     | :x:                                                                 |
-| DailyDeals               | 100% :heavy_check_mark: | :x:                                                                 |
-| LibraryInfo              | 100%                    | :x:                                                                 |
-| PVPChallengeInstances    | 99%                     | :x:                                                                 |
-| PersistentEnemies        | 100% :heavy_check_mark: | :x:                                                                 |
-| PVPAlternativeModes      | 100% :heavy_check_mark: | :x:                                                                 |
-| PVPActiveTournaments     | 100% :heavy_check_mark: | :x:                                                                 |
-| ProjectPct               | 100% :heavy_check_mark: | :x:                                                                 |
-| ConstructionProjects     | 100% :heavy_check_mark: | :x:                                                                 |
-| TwitchPromos             | 100% :heavy_check_mark: | :x:                                                                 |
-| WeeklyChallenges         | 100% :heavy_check_mark: | :x:                                                                 |
+### Global filter(required):
+
+-  platform:  (pc,ps4 or xb1)  (**not required for News!**)
+
+### Additional Parts:
+
+Patchlogs (only  for Game  Updates & Hotfixes)  
+Day/Night Cycle data for Earth & Cetus   
+Warm/Cold Cycle data for Venus  
+Data History for Alerts, DailyDeals & SyndicateMissions   
+
+
+### WordState.php Parts Coverage
+
+| Section                  | Coverage Status         | Other Informations                       |
+| ------------------------ | ----------------------- | ---------------------------------------- |
+| WorldSeed                | 0% :x:                  |                                          |
+| Version                  | 0% :x:                  |                                          |
+| MobileVersion            | 0% :x:                  |                                          |
+| BuildLabel               | 0% :x:                  |                                          |
+| Time                     | 0% :x:                  |                                          |
+| Date                     | 0% :x:                  |                                          |
+| Events(News)             | 100% :heavy_check_mark: | currently  only Englisch News are parsed |
+| Goals                    | 0% :x:                  |                                          |
+| Alerts                   | 100% :heavy_check_mark: |                                          |
+| SyndicateMissions        | 100% :heavy_check_mark: |                                          |
+| ActiveMissions           | 0% :x:                  |                                          |
+| GlobalUpgrades           | 0% :x:                  |                                          |
+| FlashSales               | 0% :x:                  |                                          |
+| Invasions                | 0% :x:                  |                                          |
+| HubEvents                | 0% :x:                  |                                          |
+| NodeOverrides            | 0% :x:                  |                                          |
+| BadlandNodes             | 0% :x:                  |                                          |
+| VoidTraders              | 0% :x:                  |                                          |
+| PrimeAccessAvailability  | 0% :x:                  |                                          |
+| PrimeVaultAvailabilities | 0% :x:                  |                                          |
+| DailyDeals               | 100% :heavy_check_mark: |                                          |
+| LibraryInfo              | 0% :x:                  |                                          |
+| PVPChallengeInstances    | 0% :x:                  |                                          |
+| PersistentEnemies        | 0% :x:                  |                                          |
+| PVPAlternativeModes      | 0% :x:                  |                                          |
+| PVPActiveTournaments     | 0% :x:                  |                                          |
+| ProjectPct               | 0% :x:                  |                                          |
+| ConstructionProjects     | 0% :x:                  |                                          |
+| TwitchPromos             | 0% :x:                  |                                          |
+| WeeklyChallenges         | 0% :x:                  |                                          |
+
+
+
