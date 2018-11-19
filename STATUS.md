@@ -23,7 +23,7 @@ Data History for Alerts, DailyDeals & SyndicateMissions
 | Time                     | 0% :x:                  |                                          |
 | Date                     | 0% :x:                  |                                          |
 | Events(News)             | 100% :heavy_check_mark: | currently  only Englisch News are parsed |
-| Goals                    | 0% :x:                  |                                          |
+| Goals                    | 0% :question: | will be included when there is parseable content                                         |
 | Alerts                   | 100% :heavy_check_mark: |                                          |
 | Sorties| 100% :heavy_check_mark:||
 | SyndicateMissions        | 100% :heavy_check_mark: |                                          |
@@ -31,7 +31,7 @@ Data History for Alerts, DailyDeals & SyndicateMissions
 | GlobalUpgrades           | 0% :x:                  |                                          |
 | FlashSales               | 0% :x:                  |                                          |
 | Invasions                | 0% :x:                  |                                          |
-| HubEvents                | 0% :x:                  |                                          |
+| HubEvents                | 0% :question: | will be included when there is parseable content|
 | NodeOverrides            | 0% :x:                  |                                          |
 | BadlandNodes             | 0% :x:                  |                                          |
 | VoidTraders              | 0% :x:                  |                                          |
@@ -40,11 +40,11 @@ Data History for Alerts, DailyDeals & SyndicateMissions
 | DailyDeals               | 100% :heavy_check_mark: |                                          |
 | LibraryInfo              | 0% :x:                  |                                          |
 | PVPChallengeInstances    | 0% :x:                  |                                          |
-| PersistentEnemies        | 0% :x:                  |                                          |
-| PVPAlternativeModes      | 0% :x:                  |                                          |
-| PVPActiveTournaments     | 0% :x:                  |                                          |
+| PersistentEnemies        | 0% :question: | will be included when there is parseable content|
+| PVPAlternativeModes      |  0% :question: | will be included when there is parseable content|
+| PVPActiveTournaments     |  0% :question: | will be included when there is parseable content|
 | ProjectPct               | 0% :x:                  |                                          |
-| ConstructionProjects     | 0% :x:                  |                                          |
+| ConstructionProjects     |  0% :question: | will be included when there is parseable content|
 | TwitchPromos             | 0% :x:                  |                                          |
 | WeeklyChallenges         | 0% :x:                  |                                          |
 
