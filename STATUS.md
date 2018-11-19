@@ -27,7 +27,7 @@ Data History for Alerts, DailyDeals & SyndicateMissions
 | Alerts                   | 100% :heavy_check_mark: |                                          |
 | Sorties| 100% :heavy_check_mark:||
 | SyndicateMissions        | 100% :heavy_check_mark: |                                          |
-| ActiveMissions           | 0% :x:                  |                                          |
+| ActiveMissions           |100% :heavy_check_mark:                  |                                          |
 | GlobalUpgrades           | 0% :x:                  |                                          |
 | FlashSales               | 0% :x:                  |                                          |
 | Invasions                | 0% :x:                  |                                          |
