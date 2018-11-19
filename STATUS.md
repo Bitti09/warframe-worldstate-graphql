@@ -25,6 +25,7 @@ Data History for Alerts, DailyDeals & SyndicateMissions
 | Events(News)             | 100% :heavy_check_mark: | currently  only Englisch News are parsed |
 | Goals                    | 0% :x:                  |                                          |
 | Alerts                   | 100% :heavy_check_mark: |                                          |
+| Sorties| 100% :heavy_check_mark:||
 | SyndicateMissions        | 100% :heavy_check_mark: |                                          |
 | ActiveMissions           | 0% :x:                  |                                          |
 | GlobalUpgrades           | 0% :x:                  |                                          |
