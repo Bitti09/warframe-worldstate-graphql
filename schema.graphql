@@ -1,428 +1,58 @@
 type Alerts {
   alertid: String!
+  """
+  Shows the Activation timestamp in unix format
+  """
   Activation: String
+  """
+  Shows the Expiry timestamp in unix format
+  """
   Expiry: String
+  """
+  Shows the platform id for the Alert
+  """
   platform: String
+  """
+  Shows the MissionType for the Alert
+  """
   MissionType: String
+  """
+  Shows the MissionFaction for the Alert
+  """
   MissionFaction: String
+  """
+  Shows the MissionLocation for the Alert
+  """
   MissionLocation: String
+  """
+  Shows the MissionRewardItem for the Alert
+  """
   MissionRewardItem: String
+  """
+  Shows the MissionRewardCredits for the Alert
+  """
   MissionRewardCredits: Float
+  """
+  Shows the url to the MissionReward Image for the Alert
+  """
   MissionRewardImg: String
+  """
+  Shows the Minimum Enemy level for the Alert
+  """
   MissionMinEnemyLvl: Int
+  """
+  Shows the MAximum Enemy level for the Alert
+  """
   MissionMaxEnemyLevel: Int
+  """
+  Shows the State of NightmareMode for the Alert
+  """
   MissionNightmareMode: Boolean
+  """
+  Shows the State of Archwing Reqirement for the Alert
+  """
   MissionAchwingRequired: Boolean
 }
-
-enum AlertsOrderByInput {
-  alertid_ASC
-  alertid_DESC
-  platform_ASC
-  platform_DESC
-  Activation_ASC
-  Activation_DESC
-  Expiry_ASC
-  Expiry_DESC
-  MissionType_ASC
-  MissionType_DESC
-  MissionFaction_ASC
-  MissionFaction_DESC
-  MissionLocation_ASC
-  MissionLocation_DESC
-  MissionRewardItem_ASC
-  MissionRewardItem_DESC
-  MissionRewardCredits_ASC
-  MissionRewardCredits_DESC
-  MissionRewardImg_ASC
-  MissionRewardImg_DESC
-  MissionMinEnemyLvl_ASC
-  MissionMinEnemyLvl_DESC
-  MissionMaxEnemyLevel_ASC
-  MissionMaxEnemyLevel_DESC
-  MissionNightmareMode_ASC
-  MissionNightmareMode_DESC
-  MissionAchwingRequired_ASC
-  MissionAchwingRequired_DESC
-  id_ASC
-  id_DESC
-  createdAt_ASC
-  createdAt_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-}
-
-input AlertsWhereInput {
-  alertid: String
-  alertid_not: String
-  alertid_in: [String!]
-  alertid_not_in: [String!]
-  alertid_lt: String
-  alertid_lte: String
-  alertid_gt: String
-  alertid_gte: String
-  alertid_contains: String
-  alertid_not_contains: String
-  alertid_starts_with: String
-  alertid_not_starts_with: String
-  alertid_ends_with: String
-  alertid_not_ends_with: String
-  platform: String
-  platform_not: String
-  platform_in: [String!]
-  platform_not_in: [String!]
-  platform_lt: String
-  platform_lte: String
-  platform_gt: String
-  platform_gte: String
-  platform_contains: String
-  platform_not_contains: String
-  platform_starts_with: String
-  platform_not_starts_with: String
-  platform_ends_with: String
-  platform_not_ends_with: String
-  Activation: Int
-  Activation_not: Int
-  Activation_in: [Int!]
-  Activation_not_in: [Int!]
-  Activation_lt: Int
-  Activation_lte: Int
-  Activation_gt: Int
-  Activation_gte: Int
-  Expiry: Int
-  Expiry_not: Int
-  Expiry_in: [Int!]
-  Expiry_not_in: [Int!]
-  Expiry_lt: Int
-  Expiry_lte: Int
-  Expiry_gt: Int
-  Expiry_gte: Int
-  MissionType: String
-  MissionType_not: String
-  MissionType_in: [String!]
-  MissionType_not_in: [String!]
-  MissionType_lt: String
-  MissionType_lte: String
-  MissionType_gt: String
-  MissionType_gte: String
-  MissionType_contains: String
-  MissionType_not_contains: String
-  MissionType_starts_with: String
-  MissionType_not_starts_with: String
-  MissionType_ends_with: String
-  MissionType_not_ends_with: String
-  MissionFaction: String
-  MissionFaction_not: String
-  MissionFaction_in: [String!]
-  MissionFaction_not_in: [String!]
-  MissionFaction_lt: String
-  MissionFaction_lte: String
-  MissionFaction_gt: String
-  MissionFaction_gte: String
-  MissionFaction_contains: String
-  MissionFaction_not_contains: String
-  MissionFaction_starts_with: String
-  MissionFaction_not_starts_with: String
-  MissionFaction_ends_with: String
-  MissionFaction_not_ends_with: String
-  MissionLocation: String
-  MissionLocation_not: String
-  MissionLocation_in: [String!]
-  MissionLocation_not_in: [String!]
-  MissionLocation_lt: String
-  MissionLocation_lte: String
-  MissionLocation_gt: String
-  MissionLocation_gte: String
-  MissionLocation_contains: String
-  MissionLocation_not_contains: String
-  MissionLocation_starts_with: String
-  MissionLocation_not_starts_with: String
-  MissionLocation_ends_with: String
-  MissionLocation_not_ends_with: String
-  MissionRewardItem: String
-  MissionRewardItem_not: String
-  MissionRewardItem_in: [String!]
-  MissionRewardItem_not_in: [String!]
-  MissionRewardItem_lt: String
-  MissionRewardItem_lte: String
-  MissionRewardItem_gt: String
-  MissionRewardItem_gte: String
-  MissionRewardItem_contains: String
-  MissionRewardItem_not_contains: String
-  MissionRewardItem_starts_with: String
-  MissionRewardItem_not_starts_with: String
-  MissionRewardItem_ends_with: String
-  MissionRewardItem_not_ends_with: String
-  MissionRewardCredits: Int
-  MissionRewardCredits_not: Int
-  MissionRewardCredits_in: [Int!]
-  MissionRewardCredits_not_in: [Int!]
-  MissionRewardCredits_lt: Int
-  MissionRewardCredits_lte: Int
-  MissionRewardCredits_gt: Int
-  MissionRewardCredits_gte: Int
-  MissionRewardImg: String
-  MissionRewardImg_not: String
-  MissionRewardImg_in: [String!]
-  MissionRewardImg_not_in: [String!]
-  MissionRewardImg_lt: String
-  MissionRewardImg_lte: String
-  MissionRewardImg_gt: String
-  MissionRewardImg_gte: String
-  MissionRewardImg_contains: String
-  MissionRewardImg_not_contains: String
-  MissionRewardImg_starts_with: String
-  MissionRewardImg_not_starts_with: String
-  MissionRewardImg_ends_with: String
-  MissionRewardImg_not_ends_with: String
-  MissionMinEnemyLvl: Int
-  MissionMinEnemyLvl_not: Int
-  MissionMinEnemyLvl_in: [Int!]
-  MissionMinEnemyLvl_not_in: [Int!]
-  MissionMinEnemyLvl_lt: Int
-  MissionMinEnemyLvl_lte: Int
-  MissionMinEnemyLvl_gt: Int
-  MissionMinEnemyLvl_gte: Int
-  MissionMaxEnemyLevel: Int
-  MissionMaxEnemyLevel_not: Int
-  MissionMaxEnemyLevel_in: [Int!]
-  MissionMaxEnemyLevel_not_in: [Int!]
-  MissionMaxEnemyLevel_lt: Int
-  MissionMaxEnemyLevel_lte: Int
-  MissionMaxEnemyLevel_gt: Int
-  MissionMaxEnemyLevel_gte: Int
-  MissionNightmareMode: Boolean
-  MissionNightmareMode_not: Boolean
-  MissionAchwingRequired: Boolean
-  MissionAchwingRequired_not: Boolean
-  AND: [AlertsWhereInput!]
-  OR: [AlertsWhereInput!]
-  NOT: [AlertsWhereInput!]
-}
-
-type DailyDeals {
-  Dealid: String!
-  platform: String
-  item: String
-  expiry: Int
-  originalPrice: Int
-  salePrice: Int
-  total: Int
-  sold: Int
-  discount: Int
-}
-
-enum DailyDealsOrderByInput {
-  Dealid_ASC
-  Dealid_DESC
-  platform_ASC
-  platform_DESC
-  item_ASC
-  item_DESC
-  expiry_ASC
-  expiry_DESC
-  originalPrice_ASC
-  originalPrice_DESC
-  salePrice_ASC
-  salePrice_DESC
-  total_ASC
-  total_DESC
-  sold_ASC
-  sold_DESC
-  discount_ASC
-  discount_DESC
-  id_ASC
-  id_DESC
-  createdAt_ASC
-  createdAt_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-}
-
-input DailyDealsWhereInput {
-  Dealid: String
-  Dealid_not: String
-  Dealid_in: [String!]
-  Dealid_not_in: [String!]
-  Dealid_lt: String
-  Dealid_lte: String
-  Dealid_gt: String
-  Dealid_gte: String
-  Dealid_contains: String
-  Dealid_not_contains: String
-  Dealid_starts_with: String
-  Dealid_not_starts_with: String
-  Dealid_ends_with: String
-  Dealid_not_ends_with: String
-  platform: String
-  platform_not: String
-  platform_in: [String!]
-  platform_not_in: [String!]
-  platform_lt: String
-  platform_lte: String
-  platform_gt: String
-  platform_gte: String
-  platform_contains: String
-  platform_not_contains: String
-  platform_starts_with: String
-  platform_not_starts_with: String
-  platform_ends_with: String
-  platform_not_ends_with: String
-  item: String
-  item_not: String
-  item_in: [String!]
-  item_not_in: [String!]
-  item_lt: String
-  item_lte: String
-  item_gt: String
-  item_gte: String
-  item_contains: String
-  item_not_contains: String
-  item_starts_with: String
-  item_not_starts_with: String
-  item_ends_with: String
-  item_not_ends_with: String
-  expiry: Int
-  expiry_not: Int
-  expiry_in: [Int!]
-  expiry_not_in: [Int!]
-  expiry_lt: Int
-  expiry_lte: Int
-  expiry_gt: Int
-  expiry_gte: Int
-  originalPrice: Int
-  originalPrice_not: Int
-  originalPrice_in: [Int!]
-  originalPrice_not_in: [Int!]
-  originalPrice_lt: Int
-  originalPrice_lte: Int
-  originalPrice_gt: Int
-  originalPrice_gte: Int
-  salePrice: Int
-  salePrice_not: Int
-  salePrice_in: [Int!]
-  salePrice_not_in: [Int!]
-  salePrice_lt: Int
-  salePrice_lte: Int
-  salePrice_gt: Int
-  salePrice_gte: Int
-  total: Int
-  total_not: Int
-  total_in: [Int!]
-  total_not_in: [Int!]
-  total_lt: Int
-  total_lte: Int
-  total_gt: Int
-  total_gte: Int
-  sold: Int
-  sold_not: Int
-  sold_in: [Int!]
-  sold_not_in: [Int!]
-  sold_lt: Int
-  sold_lte: Int
-  sold_gt: Int
-  sold_gte: Int
-  discount: Int
-  discount_not: Int
-  discount_in: [Int!]
-  discount_not_in: [Int!]
-  discount_lt: Int
-  discount_lte: Int
-  discount_gt: Int
-  discount_gte: Int
-  AND: [DailyDealsWhereInput!]
-  OR: [DailyDealsWhereInput!]
-  NOT: [DailyDealsWhereInput!]
-}
-
-type DayNightCycle {
-  Cycleid: Int!
-  Earthexpiry: Int
-  EarthisDay: Boolean
-  Cetusexpiry: Int
-  CetusisDay: Boolean
-  Vallisexpiry: Int
-  VallisisWarm: Boolean
-}
-
-enum DayNightCycleOrderByInput {
-  Cycleid_ASC
-  Cycleid_DESC
-  Earthexpiry_ASC
-  Earthexpiry_DESC
-  EarthisDay_ASC
-  EarthisDay_DESC
-  Cetusexpiry_ASC
-  Cetusexpiry_DESC
-  CetusisDay_ASC
-  CetusisDay_DESC
-  Vallisexpiry_ASC
-  Vallisexpiry_DESC
-  VallisisWarm_ASC
-  VallisisWarm_DESC
-  id_ASC
-  id_DESC
-  createdAt_ASC
-  createdAt_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-}
-
-input DayNightCycleWhereInput {
-  Cycleid: Int
-  Cycleid_not: Int
-  Cycleid_in: [Int!]
-  Cycleid_not_in: [Int!]
-  Cycleid_lt: Int
-  Cycleid_lte: Int
-  Cycleid_gt: Int
-  Cycleid_gte: Int
-  Earthexpiry: Int
-  Earthexpiry_not: Int
-  Earthexpiry_in: [Int!]
-  Earthexpiry_not_in: [Int!]
-  Earthexpiry_lt: Int
-  Earthexpiry_lte: Int
-  Earthexpiry_gt: Int
-  Earthexpiry_gte: Int
-  EarthisDay: Boolean
-  EarthisDay_not: Boolean
-  Cetusexpiry: Int
-  Cetusexpiry_not: Int
-  Cetusexpiry_in: [Int!]
-  Cetusexpiry_not_in: [Int!]
-  Cetusexpiry_lt: Int
-  Cetusexpiry_lte: Int
-  Cetusexpiry_gt: Int
-  Cetusexpiry_gte: Int
-  CetusisDay: Boolean
-  CetusisDay_not: Boolean
-  Vallisexpiry: Int
-  Vallisexpiry_not: Int
-  Vallisexpiry_in: [Int!]
-  Vallisexpiry_not_in: [Int!]
-  Vallisexpiry_lt: Int
-  Vallisexpiry_lte: Int
-  Vallisexpiry_gt: Int
-  Vallisexpiry_gte: Int
-  VallisisWarm: Boolean
-  VallisisWarm_not: Boolean
-  AND: [DayNightCycleWhereInput!]
-  OR: [DayNightCycleWhereInput!]
-  NOT: [DayNightCycleWhereInput!]
-}
-
-type Jobs {
-  missionid: String
-  jobid: String
-  rewardPool: [String!]!
-  type: String
-  enemyLevels: String
-  standingStages: String
-}
-
-scalar Json
-
 type News {
   newsid: String!
   message: String
@@ -434,110 +64,32 @@ type News {
   stream: Boolean
   translations: Json
 }
-
-enum NewsOrderByInput {
-  newsid_ASC
-  newsid_DESC
-  message_ASC
-  message_DESC
-  link_ASC
-  link_DESC
-  imageLink_ASC
-  imageLink_DESC
-  date_ASC
-  date_DESC
-  update_ASC
-  update_DESC
-  primeAccess_ASC
-  primeAccess_DESC
-  stream_ASC
-  stream_DESC
-  translations_ASC
-  translations_DESC
-  id_ASC
-  id_DESC
-  createdAt_ASC
-  createdAt_DESC
-  updatedAt_ASC
-  updatedAt_DESC
+type SyndicateMissions {
+  missionid: String!
+  platform: String
+  activation: Int
+  expiry: Int
+  syndicate: String
+  nodes: Json
+  jobs: Json
 }
-
-input NewsWhereInput {
-  newsid: String
-  newsid_not: String
-  newsid_in: [String!]
-  newsid_not_in: [String!]
-  newsid_lt: String
-  newsid_lte: String
-  newsid_gt: String
-  newsid_gte: String
-  newsid_contains: String
-  newsid_not_contains: String
-  newsid_starts_with: String
-  newsid_not_starts_with: String
-  newsid_ends_with: String
-  newsid_not_ends_with: String
-  message: String
-  message_not: String
-  message_in: [String!]
-  message_not_in: [String!]
-  message_lt: String
-  message_lte: String
-  message_gt: String
-  message_gte: String
-  message_contains: String
-  message_not_contains: String
-  message_starts_with: String
-  message_not_starts_with: String
-  message_ends_with: String
-  message_not_ends_with: String
-  link: String
-  link_not: String
-  link_in: [String!]
-  link_not_in: [String!]
-  link_lt: String
-  link_lte: String
-  link_gt: String
-  link_gte: String
-  link_contains: String
-  link_not_contains: String
-  link_starts_with: String
-  link_not_starts_with: String
-  link_ends_with: String
-  link_not_ends_with: String
-  imageLink: String
-  imageLink_not: String
-  imageLink_in: [String!]
-  imageLink_not_in: [String!]
-  imageLink_lt: String
-  imageLink_lte: String
-  imageLink_gt: String
-  imageLink_gte: String
-  imageLink_contains: String
-  imageLink_not_contains: String
-  imageLink_starts_with: String
-  imageLink_not_starts_with: String
-  imageLink_ends_with: String
-  imageLink_not_ends_with: String
-  date: Int
-  date_not: Int
-  date_in: [Int!]
-  date_not_in: [Int!]
-  date_lt: Int
-  date_lte: Int
-  date_gt: Int
-  date_gte: Int
-  update: Boolean
-  update_not: Boolean
-  primeAccess: Boolean
-  primeAccess_not: Boolean
-  stream: Boolean
-  stream_not: Boolean
-  AND: [NewsWhereInput!]
-  OR: [NewsWhereInput!]
-  NOT: [NewsWhereInput!]
+type Jobs {
+  missionid: String
+  jobid: String
+  rewardPool: [String!]!
+  type: String
+  enemyLevels: String
+  standingStages: String
 }
-
+type DayNightCycle {
+  Cycleid: Int!
+  Earthexpiry: Int
+  EarthisDay: Boolean
+  Cetusexpiry: Int
+  CetusisDay: Boolean
+  Vallisexpiry: Int
+  VallisisWarm: Boolean
+}
 type Patchlogs {
   Patchid: Int!
   Name: String
@@ -549,304 +101,61 @@ type Patchlogs {
   fixes: String
   type: String
 }
-
-enum PatchlogsOrderByInput {
-  Patchid_ASC
-  Patchid_DESC
-  Name_ASC
-  Name_DESC
-  Url_ASC
-  Url_DESC
-  imgUrl_ASC
-  imgUrl_DESC
-  date_ASC
-  date_DESC
-  additions_ASC
-  additions_DESC
-  changes_ASC
-  changes_DESC
-  fixes_ASC
-  fixes_DESC
-  type_ASC
-  type_DESC
-  id_ASC
-  id_DESC
-  createdAt_ASC
-  createdAt_DESC
-  updatedAt_ASC
-  updatedAt_DESC
+type DailyDeals {
+  Dealid: String!
+  platform: String
+  item: String
+  expiry: Int
+  originalPrice: Int
+  salePrice: Int
+  total: Int
+  sold: Int
+  discount: Int
 }
-
-input PatchlogsWhereInput {
-  Patchid: Int
-  Patchid_not: Int
-  Patchid_in: [Int!]
-  Patchid_not_in: [Int!]
-  Patchid_lt: Int
-  Patchid_lte: Int
-  Patchid_gt: Int
-  Patchid_gte: Int
-  Name: String
-  Name_not: String
-  Name_in: [String!]
-  Name_not_in: [String!]
-  Name_lt: String
-  Name_lte: String
-  Name_gt: String
-  Name_gte: String
-  Name_contains: String
-  Name_not_contains: String
-  Name_starts_with: String
-  Name_not_starts_with: String
-  Name_ends_with: String
-  Name_not_ends_with: String
-  Url: String
-  Url_not: String
-  Url_in: [String!]
-  Url_not_in: [String!]
-  Url_lt: String
-  Url_lte: String
-  Url_gt: String
-  Url_gte: String
-  Url_contains: String
-  Url_not_contains: String
-  Url_starts_with: String
-  Url_not_starts_with: String
-  Url_ends_with: String
-  Url_not_ends_with: String
-  imgUrl: String
-  imgUrl_not: String
-  imgUrl_in: [String!]
-  imgUrl_not_in: [String!]
-  imgUrl_lt: String
-  imgUrl_lte: String
-  imgUrl_gt: String
-  imgUrl_gte: String
-  imgUrl_contains: String
-  imgUrl_not_contains: String
-  imgUrl_starts_with: String
-  imgUrl_not_starts_with: String
-  imgUrl_ends_with: String
-  imgUrl_not_ends_with: String
-  date: Int
-  date_not: Int
-  date_in: [Int!]
-  date_not_in: [Int!]
-  date_lt: Int
-  date_lte: Int
-  date_gt: Int
-  date_gte: Int
-  additions: String
-  additions_not: String
-  additions_in: [String!]
-  additions_not_in: [String!]
-  additions_lt: String
-  additions_lte: String
-  additions_gt: String
-  additions_gte: String
-  additions_contains: String
-  additions_not_contains: String
-  additions_starts_with: String
-  additions_not_starts_with: String
-  additions_ends_with: String
-  additions_not_ends_with: String
-  changes: String
-  changes_not: String
-  changes_in: [String!]
-  changes_not_in: [String!]
-  changes_lt: String
-  changes_lte: String
-  changes_gt: String
-  changes_gte: String
-  changes_contains: String
-  changes_not_contains: String
-  changes_starts_with: String
-  changes_not_starts_with: String
-  changes_ends_with: String
-  changes_not_ends_with: String
-  fixes: String
-  fixes_not: String
-  fixes_in: [String!]
-  fixes_not_in: [String!]
-  fixes_lt: String
-  fixes_lte: String
-  fixes_gt: String
-  fixes_gte: String
-  fixes_contains: String
-  fixes_not_contains: String
-  fixes_starts_with: String
-  fixes_not_starts_with: String
-  fixes_ends_with: String
-  fixes_not_ends_with: String
-  type: String
-  type_not: String
-  type_in: [String!]
-  type_not_in: [String!]
-  type_lt: String
-  type_lte: String
-  type_gt: String
-  type_gte: String
-  type_contains: String
-  type_not_contains: String
-  type_starts_with: String
-  type_not_starts_with: String
-  type_ends_with: String
-  type_not_ends_with: String
-  AND: [PatchlogsWhereInput!]
-  OR: [PatchlogsWhereInput!]
-  NOT: [PatchlogsWhereInput!]
-}
-
-type Query {
-  Alerts(
-    orderBy: AlertsOrderByInput
-    where: AlertsWhereInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): [Alerts!]!
-  News(
-    orderBy: NewsOrderByInput
-    where: NewsWhereInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): [News!]!
-  SyndicateMissions(
-    orderBy: SyndicateMissionsOrderByInput
-    where: SyndicateMissionsWhereInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): [SyndicateMissions!]!
-  dayNightCycle(
-    orderBy: DayNightCycleOrderByInput
-    where: DayNightCycleWhereInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): [DayNightCycle!]!
-  Patchlogs(
-    orderBy: PatchlogsOrderByInput
-    where: PatchlogsWhereInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): [Patchlogs!]!
-  DailyDeals(
-    orderBy: DailyDealsOrderByInput
-    where: DailyDealsWhereInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): [DailyDeals!]!
-}
-
-type SyndicateMissions {
-  missionid: String!
+type Sortie {
+  SortieId: String!
   platform: String
   activation: Int
   expiry: Int
-  syndicate: String
-  nodes: Json
-  jobs: Json
+  rewardPool: String
+  variants: Json
+  boss: String
+  faction: String
 }
-
-enum SyndicateMissionsOrderByInput {
-  missionid_ASC
-  missionid_DESC
-  platform_ASC
-  platform_DESC
-  activation_ASC
-  activation_DESC
-  expiry_ASC
-  expiry_DESC
-  syndicate_ASC
-  syndicate_DESC
-  nodes_ASC
-  nodes_DESC
-  jobs_ASC
-  jobs_DESC
-  id_ASC
-  id_DESC
-  createdAt_ASC
-  createdAt_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-}
-
-input SyndicateMissionsWhereInput {
-  missionid: String
-  missionid_not: String
-  missionid_in: [String!]
-  missionid_not_in: [String!]
-  missionid_lt: String
-  missionid_lte: String
-  missionid_gt: String
-  missionid_gte: String
-  missionid_contains: String
-  missionid_not_contains: String
-  missionid_starts_with: String
-  missionid_not_starts_with: String
-  missionid_ends_with: String
-  missionid_not_ends_with: String
+type Fissures {
+  FissureId: String!
   platform: String
-  platform_not: String
-  platform_in: [String!]
-  platform_not_in: [String!]
-  platform_lt: String
-  platform_lte: String
-  platform_gt: String
-  platform_gte: String
-  platform_contains: String
-  platform_not_contains: String
-  platform_starts_with: String
-  platform_not_starts_with: String
-  platform_ends_with: String
-  platform_not_ends_with: String
   activation: Int
-  activation_not: Int
-  activation_in: [Int!]
-  activation_not_in: [Int!]
-  activation_lt: Int
-  activation_lte: Int
-  activation_gt: Int
-  activation_gte: Int
   expiry: Int
-  expiry_not: Int
-  expiry_in: [Int!]
-  expiry_not_in: [Int!]
-  expiry_lt: Int
-  expiry_lte: Int
-  expiry_gt: Int
-  expiry_gte: Int
-  syndicate: String
-  syndicate_not: String
-  syndicate_in: [String!]
-  syndicate_not_in: [String!]
-  syndicate_lt: String
-  syndicate_lte: String
-  syndicate_gt: String
-  syndicate_gte: String
-  syndicate_contains: String
-  syndicate_not_contains: String
-  syndicate_starts_with: String
-  syndicate_not_starts_with: String
-  syndicate_ends_with: String
-  syndicate_not_ends_with: String
-  AND: [SyndicateMissionsWhereInput!]
-  OR: [SyndicateMissionsWhereInput!]
-  NOT: [SyndicateMissionsWhereInput!]
+  node: String
+  missionType: String
+  enemy: String
+  tier: String
+  tierNum: Int
+}
+type Invasions {
+  InvasionId: String!
+  platform: String
+  activation: Int
+  node: String
+  desc: String
+  attackerRewardItem: String
+  attackerRewardCount: Int
+  attackerRewardCredits: Int
+  attackerRewardThumb: String
+  attackingFaction: String
+  defenderRewardItem: String
+  defenderRewardCount: Int
+  defenderRewardCredits: Int
+  defenderRewardThumb: String
+  defendingFaction: String
+  vsInfestation: Boolean
+  completion: Float
+  completed: Boolean
+}
+type Subscription {
+  alertcreated: Alerts
+  alertupdated: Alerts
+  invasioncreated: Invasions
+  invasionupdated: Invasions
 }
